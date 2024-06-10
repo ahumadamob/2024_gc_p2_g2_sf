@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="registro_de_ingreso_y_egreso")
 public class RegistroDeIngresoYEgreso {
 
 	@Id
