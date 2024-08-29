@@ -1,4 +1,4 @@
-package gc._4.pr2.grupo2.Entity;
+package gc._4.pr2.grupo2.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
