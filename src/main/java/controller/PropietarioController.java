@@ -22,12 +22,12 @@ import gc._4.pr2.grupo2.entity.Propietario;
 	    private PropietarioService propietarioService;
 
 	    @GetMapping
-	    public List<Propietario> listarPropietarios() {
+	    public List<Propietario> obtenerTodosLosPropietarios() {
 	        return propietarioService.obtenerTodosLosPropietarios();
 	    }
 
 	    @PostMapping
-	    public Propietario crearPropietario(@RequestBody Propietario propietario) {
+	    public Propietario guardarPropietario(@RequestBody Propietario propietario) {
 	        return propietarioService.guardarPropietario(propietario);
 	    }
 
