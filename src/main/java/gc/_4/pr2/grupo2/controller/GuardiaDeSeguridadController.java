@@ -21,30 +21,30 @@ package gc._4.pr2.grupo2.controller;
 	@Autowired
 	private IGuardiaDeSeguridadService service;
 		
-	@GetMapping("/listar_guardias")
+	@GetMapping("/guardias")
 	public List<GuardiaDeSeguridad> mostrarTodosLosGuardias(){
 		return service.mostrarTodos();
 	}
 		
-	@GetMapping("/guardia/{id}")
+	@GetMapping("/guardias/{id}")
 	GuardiaDeSeguridad mostrarGuardiaPorId(@PathVariable("id") Long id){
 		return service.mostrarGuardiaPorId(id);
 	}
 		
-	@PostMapping("/crear_guardia")
+	@PostMapping("/guardias")
 	GuardiaDeSeguridad crearGuardia(@RequestBody GuardiaDeSeguridad GuardiaDeSeguridadDesdeElServicio){	
 		return service.guardar(GuardiaDeSeguridadDesdeElServicio);
 	}
 		
-	@PutMapping("/actualizar_guardia")
+	@PutMapping("/guardias")
 	GuardiaDeSeguridad actualizarGuardia(@RequestBody GuardiaDeSeguridad GuardiaDeSeguridadDesdeElServicio){
 		return service.guardar(GuardiaDeSeguridadDesdeElServicio);
 	}
 		
-	@DeleteMapping("/guardia/{id}")
+	@DeleteMapping("/guardias/{id}")
 	void borrarGuardia(@PathVariable("id") Long id){
 		service.eliminarPorId(id);
 	}
-		
+	
 }
 
