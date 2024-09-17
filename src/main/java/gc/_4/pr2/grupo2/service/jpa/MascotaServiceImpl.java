@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class MascotaServiceImpl implements MascotaService {
@@ -26,10 +26,21 @@ public class MascotaServiceImpl implements MascotaService {
     }
 
     @Override
-    public Optional<Mascota> obtenerMascotaPorId(Long id) {
-        return mascotaRepository.findById(id);
+    public Mascota obtenerMascotaPorId(Long id) {
+        return mascotaRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Mascota actualizarMascota(Long id, Mascota mascotaDetalles) {
+        Mascota mascotaExistente = obtenerMascotaPorId(id);
+        mascotaExistente.setNombre(mascotaDetalles.getNombre());
+        mascotaExistente.setEspecie(mascotaDetalles.getEspecie());
+        mascotaExistente.setRaza(mascotaDetalles.getRaza());
+        mascotaExistente.setEdad(mascotaDetalles.getEdad());
+        mascotaExistente.setPropiedad(mascotaDetalles.getPropiedad());
+        return mascotaRepository.save(mascotaExistente);
+    }
+          
     @Override
     public void eliminarMascota(Long id) {
         mascotaRepository.deleteById(id);
