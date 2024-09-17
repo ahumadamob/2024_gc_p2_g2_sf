@@ -32,6 +32,12 @@ public class MascotaController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+     @PutMapping("/{id}")
+    public ResponseEntity<Mascota> actualizarMascota(@PathVariable Long id, @RequestBody Mascota mascotaDetalles) {
+        Mascota mascotaActualizada = mascotaService.actualizarMascota(id, mascotaDetalles);
+        return ResponseEntity.ok(mascotaActualizada);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarMascota(@PathVariable Long id) {
         mascotaService.eliminarMascota(id);
