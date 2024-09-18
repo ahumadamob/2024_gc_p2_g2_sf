@@ -25,11 +25,14 @@ public class MascotaController {
         return mascotaService.obtenerTodasLasMascotas();
     }
 
-    @GetMapping("/{id}")
+     @GetMapping("/{id}")
     public ResponseEntity<Mascota> obtenerMascotaPorId(@PathVariable Long id) {
-        return mascotaService.obtenerMascotaPorId(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        Mascota mascota = mascotaService.obtenerMascotaPorId(id);
+        if (mascota != null) {
+            return ResponseEntity.ok(mascota);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
      @PutMapping("/{id}")
