@@ -25,6 +25,11 @@ import gc._4.pr2.grupo2.entity.Propietario;
 	    public List<Propietario> obtenerTodosLosPropietarios() {
 	        return propietarioService.obtenerTodosLosPropietarios();
 	    }
+	    
+	    @GetMapping("/{id}")
+	    public Propietario obtenerPropietario(@PathVariable Long id) {
+	        return propietarioService.obtenerPropietarioPorId(id);
+	    }
 
 	    @PostMapping
 	    public Propietario guardarPropietario(@RequestBody Propietario propietario) {

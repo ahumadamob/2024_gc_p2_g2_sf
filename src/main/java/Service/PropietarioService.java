@@ -9,4 +9,5 @@ public interface PropietarioService {
     List<Propietario> obtenerTodosLosPropietarios();
     Propietario guardarPropietario(Propietario propietario);
     void eliminarPropietario(Long id);
+    Propietario obtenerPropietarioPorId(Long id);
 }
