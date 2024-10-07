@@ -31,15 +31,10 @@ public class MascotaServiceImpl implements MascotaService {
     }
 
     @Override
-    public Mascota actualizarMascota(Long id, Mascota mascotaDetalles) {
-        Mascota mascotaExistente = obtenerMascotaPorId(id);
-        mascotaExistente.setNombre(mascotaDetalles.getNombre());
-        mascotaExistente.setEspecie(mascotaDetalles.getEspecie());
-        mascotaExistente.setRaza(mascotaDetalles.getRaza());
-        mascotaExistente.setEdad(mascotaDetalles.getEdad());
-        mascotaExistente.setPropiedad(mascotaDetalles.getPropiedad());
-        return mascotaRepository.save(mascotaExistente);
-    }
+public Mascota actualizarMascota(Long id, Mascota mascotaDetalles) {
+     mascotaDetalles.setId(id);
+     return mascotaRepository.save(mascotaDetalles);
+}
           
     @Override
     public void eliminarMascota(Long id) {
