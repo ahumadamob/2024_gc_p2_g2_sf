@@ -19,7 +19,7 @@ public class Visita {
 	private LocalTime horaIngreso;
 	private LocalTime horaEgreso;
 	private String propiedadVisitada;
-	
+	//Ejemplos de encapsulamiento dentro de una clase (como getters y setters).
 	
 	public Long getId() {
 		return id;
