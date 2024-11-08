@@ -22,9 +22,13 @@ public class GuardiaDeSeguridadController {
 	@Autowired
 	private IGuardiaDeSeguridadService service;
 
-	//REDI
+	//Ejemplo de instancia e inicializacion de un objeto
 	@GetMapping ("/guardias")
 	public ResponseEntity<DTOGuardiaDeSeguridad<List<GuardiaDeSeguridad>>> mostrarTodos() {
+		
+		/* Se instancia el objeto guardiaDeSeguridad de tipo List y se inicializa mediante
+		el método "mostrarTodos" el cual le asigna sus respectivos valores*/
+		
 		List<GuardiaDeSeguridad> guardiaDeSeguridad = service.mostrarTodos();
 		if (guardiaDeSeguridad.isEmpty()){
 			return ResponseEntity.ok(new DTOGuardiaDeSeguridad<>(false, "No hay guardias cargados", null));
@@ -32,7 +36,6 @@ public class GuardiaDeSeguridadController {
 		return ResponseEntity.ok(new DTOGuardiaDeSeguridad<>(true, "Guardias encontrados", guardiaDeSeguridad));
 	}
 
-	//REDI
 	@GetMapping("/guardias/{id}")
 	public ResponseEntity<DTOGuardiaDeSeguridad<GuardiaDeSeguridad>> mostrarGuardiaPorId(@PathVariable Long id) {
 		GuardiaDeSeguridad guardiaDeSeguridad = service.mostrarGuardiaPorId(id);
@@ -42,7 +45,6 @@ public class GuardiaDeSeguridadController {
 		return ResponseEntity.ok(new DTOGuardiaDeSeguridad<>(true, "Guardia encontrado", guardiaDeSeguridad));
 	}
 	
-	//REDI
 	@PostMapping ("/guardias")
 	public DTOGuardiaDeSeguridad<GuardiaDeSeguridad> guardarGuardiaDeSeguridad(@RequestBody GuardiaDeSeguridad guardiaDeSeguridad) {
 		if(service.existe(guardiaDeSeguridad.getId())){
@@ -61,21 +63,7 @@ public class GuardiaDeSeguridadController {
             return ResponseEntity.badRequest().body(new DTOGuardiaDeSeguridad<>(false, "Guardia no encontrado", null));
         }
     }
-	//REDI
-	/*@PutMapping("/guardias/{id}")
-	GuardiaDeSeguridad actualizarGuardia(@RequestBody GuardiaDeSeguridad GuardiaDeSeguridadDesdeElServicio){
-		return service.guardar(GuardiaDeSeguridadDesdeElServicio);
-	}
-	public ResponseEntity<DTOGuardiaDeSeguridad<GuardiaDeSeguridad>> actualizarGuardiaDeSeguridad(@PathVariable Long id, @RequestBody GuardiaDeSeguridad GuardiaDeSeguridadDetalles) {
-		try {
-			GuardiaDeSeguridad guardiaActualizado = service.actualizarGuardia(id, GuardiaDeSeguridadDetalles);
-			return ResponseEntity.ok(new DTOGuardiaDeSeguridad<>(true, "Guardia actualizado exitosamente", guardiaActualizado));
-		} catch (RuntimeException e) {
-			return ResponseEntity.badRequest().body(new DTOGuardiaDeSeguridad<>(false, e.getMessage(), null));
-		}
-	}*/
-
-	//REDI
+	
 	@DeleteMapping("/guardias/{id}")
 	public ResponseEntity<DTOGuardiaDeSeguridad<Void>> eliminarPorId(@PathVariable Long id) {
 		if (service.mostrarGuardiaPorId(id) == null) {
@@ -85,7 +73,6 @@ public class GuardiaDeSeguridadController {
 		return ResponseEntity.ok(new DTOGuardiaDeSeguridad<>(true, "Guardia eliminado exitosamente", null));
 	}	
 
-	//REDI
 	@GetMapping("/guardias/existe/{id}")
 	public ResponseEntity<Boolean> verificarExistencia(@PathVariable Long id) {
 		boolean existe = service.existe(id);

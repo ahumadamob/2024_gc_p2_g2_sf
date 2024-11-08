@@ -25,7 +25,11 @@ public class GuardiaDeSeguridad {
 	private String correo;
 	@Column(name = "turno", nullable = false, unique = false)
 	private String turno;
+	
 	// Getters y Setters
+	/*ejemplo de encapsulamiento: metodos privados a los cuales se 
+	 accede mediante sus respectivos metodos get y/o set */
+	
 	 public Long getId() {
 	        return id;
 	    }
