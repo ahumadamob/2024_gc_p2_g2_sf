@@ -28,7 +28,7 @@ public class MascotaServiceImpl implements MascotaService {
     @Override
     public Mascota obtenerMascotaPorId(Long id) {
         return mascotaRepository.findById(id).orElse(null);
-
+    }
     @Override
     public Mascota actualizarMascota(Long id, Mascota mascotaDetalles) {
          if (!mascotaRepository.existsById(mascotaDetalles.getId())) {
