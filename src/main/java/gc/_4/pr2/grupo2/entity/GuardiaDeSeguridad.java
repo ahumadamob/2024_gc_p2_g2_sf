@@ -13,19 +13,23 @@ public class GuardiaDeSeguridad {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "nombre", nullable = false, unique = true)
+	@Column(name = "nombre", nullable = false, unique = false)
 	private String nombre;
-	@Column(name = "apellido", nullable = false, unique = true)
+	@Column(name = "apellido", nullable = false, unique = false)
 	private String apellido;
 	@Column(name = "dni", nullable = false, unique = true)
 	private String dni;
-	@Column(name = "telefono", nullable = false, unique = true)
+	@Column(name = "telefono", nullable = false, unique = false)
 	private String telefono;
-	@Column(name = "correo", nullable = false, unique = true)
+	@Column(name = "correo", nullable = false, unique = false)
 	private String correo;
-	@Column(name = "turno", nullable = false, unique = true)
+	@Column(name = "turno", nullable = false, unique = false)
 	private String turno;
+	
 	// Getters y Setters
+	/*ejemplo de encapsulamiento: metodos privados a los cuales se 
+	 accede mediante sus respectivos metodos get y/o set */
+	
 	 public Long getId() {
 	        return id;
 	    }

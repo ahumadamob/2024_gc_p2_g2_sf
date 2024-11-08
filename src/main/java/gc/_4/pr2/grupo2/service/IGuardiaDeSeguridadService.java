@@ -8,5 +8,7 @@ public interface IGuardiaDeSeguridadService {
 	public List<GuardiaDeSeguridad>mostrarTodos();
 	public GuardiaDeSeguridad mostrarGuardiaPorId(Long id);
 	public GuardiaDeSeguridad guardar(GuardiaDeSeguridad guardia);
+    public GuardiaDeSeguridad actualizarGuardia(Long id, GuardiaDeSeguridad guardiaDetalles);
 	public void eliminarPorId(Long id);
+	public boolean existe(Long id);
 }
