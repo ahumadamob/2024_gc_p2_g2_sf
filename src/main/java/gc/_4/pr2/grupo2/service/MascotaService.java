@@ -12,4 +12,4 @@ public interface MascotaService {
     void eliminarMascota(Long id);
     public boolean existe(Long id);
 
-}
+

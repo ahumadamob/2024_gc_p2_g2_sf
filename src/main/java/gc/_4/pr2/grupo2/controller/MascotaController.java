@@ -45,6 +45,7 @@ public class MascotaController {
         return ResponseEntity.ok(new DTOMascota<>(true, "Mascota encontrada", mascota));
     }
 
+
     @PutMapping("/mascotas/{id}")
     public ResponseEntity<DTOMascota<Mascota>> actualizarMascota(@PathVariable Long id, @RequestBody Mascota mascotaDetalles) {
         try {
@@ -53,7 +54,6 @@ public class MascotaController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(new DTOMascota<>(false, e.getMessage(), null));
         }
-    }
 
     @DeleteMapping("/mascotas/{id}")
     public ResponseEntity<DTOMascota<Void>> eliminarMascota(@PathVariable Long id) {
