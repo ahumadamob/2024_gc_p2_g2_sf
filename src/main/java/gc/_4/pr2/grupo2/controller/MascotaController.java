@@ -54,7 +54,8 @@ public class MascotaController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(new DTOMascota<>(false, e.getMessage(), null));
         }
-
+    }
+	
     @DeleteMapping("/mascotas/{id}")
     public ResponseEntity<DTOMascota<Void>> eliminarMascota(@PathVariable Long id) {
         if (mascotaService.obtenerMascotaPorId(id) == null) {
