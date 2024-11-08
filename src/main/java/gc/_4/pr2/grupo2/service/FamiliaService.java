@@ -9,11 +9,13 @@ import gc._4.pr2.grupo2.entity.Familia;
 @Service
 public interface FamiliaService {
 
-	public List<Familia> getFamilia();
-	
-	public Familia getFamiliaById(Long id);
-	
-	public Familia saveFamilia(Familia familia);
+	List<Familia> getFamilia();
 
-	public void deteleFamiliaById(Long id);
+    Familia getFamiliaById(Long id);
+
+    Familia saveFamilia(Familia familia);
+    
+    boolean deleteFamiliaById(Long id);
+    
+    public boolean existe(Long id);
 }
