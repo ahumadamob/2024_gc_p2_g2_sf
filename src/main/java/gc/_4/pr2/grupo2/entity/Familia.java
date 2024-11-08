@@ -19,6 +19,9 @@ public class Familia {
 	private String dni;
     private String relacion; //  "Padre", "Madre", "Hijo", "Hija"
     private String propiedad;
+    
+    // Los métodos getId() y setId() encapsulan el atributo id, permitiendo controlar el acceso y realizar validaciones si es necesario.
+    
 	public Long getId() {
 		return id;
 	}
