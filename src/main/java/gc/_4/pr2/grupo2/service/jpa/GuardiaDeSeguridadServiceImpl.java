@@ -27,6 +27,22 @@ public class GuardiaDeSeguridadServiceImpl implements IGuardiaDeSeguridadService
 		return repo.save(guardia);
 	}
 
+	public GuardiaDeSeguridad actualizarGuardia(Long id, GuardiaDeSeguridad guardiaDetalles) {
+		if (!repo.existsById(guardiaDetalles.getId())) {
+			throw new RuntimeException("Guardia no encontrado con id: " + guardiaDetalles.getId());
+		}
+		return repo.save(guardiaDetalles);
+	}
+
+
+	public boolean existe(Long id) {
+		if(id == null) {
+			return false;
+		}else {
+			return repo.existsById(id);
+		}
+	}
+
 	public void eliminarPorId(Long id) {
 		repo.deleteById(id);
 	}
