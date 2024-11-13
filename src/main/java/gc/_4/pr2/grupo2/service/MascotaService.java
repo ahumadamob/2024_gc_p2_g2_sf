@@ -10,4 +10,6 @@ public interface MascotaService {
     Mascota obtenerMascotaPorId(Long id);
     Mascota actualizarMascota(Long id, Mascota mascotaDetalles);
     void eliminarMascota(Long id);
+    public boolean existe(Long id);
+
 }
