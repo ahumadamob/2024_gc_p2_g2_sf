@@ -35,6 +35,7 @@ public class MascotaServiceImpl implements MascotaService {
         throw new RuntimeException("Mascota no encontrada con id: " + mascotaDetalles.getId());
         }
        return mascotaRepository.save(mascotaDetalles);
+    }
 
     @Override
 	public boolean existe(Long id) {
