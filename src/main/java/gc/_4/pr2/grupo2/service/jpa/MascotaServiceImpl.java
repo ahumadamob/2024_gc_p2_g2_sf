@@ -36,7 +36,6 @@ public class MascotaServiceImpl implements MascotaService {
         }
        return mascotaRepository.save(mascotaDetalles);
     }
-
     @Override
 	public boolean existe(Long id) {
 		if(id == null) {
