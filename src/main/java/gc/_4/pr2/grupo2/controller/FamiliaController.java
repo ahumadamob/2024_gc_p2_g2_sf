@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import dto.RespuestaDTO;
 import gc._4.pr2.grupo2.entity.Familia;
 import gc._4.pr2.grupo2.service.FamiliaService;
-import gc._4.pr2.grupo2.service.jpa.FamiliaDTO;
 
 @RestController
 public class FamiliaController {
@@ -67,10 +66,10 @@ public class FamiliaController {
     
     // Obtener familiares propietarios
     @GetMapping("/padresMadres/propietarios")
-    public RespuestaDTO<List<FamiliaDTO>> getFamiliasPropietarias(@RequestParam(required = false) Boolean viveEnPropiedad) {
-        List<FamiliaDTO> familias = familiaService.findByViveEnPropiedad(viveEnPropiedad);
+    public RespuestaDTO<List<Familia>> getFamiliasPropietarias(@RequestParam(required = false) Boolean viveEnPropiedad) {
+        List<Familia> familias = familiaService.findByViveEnPropiedad(viveEnPropiedad);
 
-        RespuestaDTO<List<FamiliaDTO>> respuesta = new RespuestaDTO<>();
+        RespuestaDTO<List<Familia>> respuesta = new RespuestaDTO<>();
         respuesta.setEstado(true);
         respuesta.setMensaje("Familias encontradas");
         respuesta.setData(familias);
