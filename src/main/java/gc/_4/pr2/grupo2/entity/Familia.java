@@ -19,6 +19,7 @@ public class Familia {
 	private String dni;
     private String relacion; //  "Padre", "Madre", "Hijo", "Hija"
     private String propiedad;
+    private boolean viveEnPropiedad;
     
     // Los métodos getId() y setId() encapsulan el atributo id, permitiendo controlar el acceso y realizar validaciones si es necesario.
     
@@ -57,6 +58,14 @@ public class Familia {
 	}
 	public void setPropiedad(String propiedad) {
 		this.propiedad = propiedad;
+	}
+	
+	// Getter y Setter de viveEnPropiedad
+	public boolean getViveEnPropiedad() {
+		return viveEnPropiedad;
+	}
+	public void setViveEnPropiedad(boolean viveEnPropiedad) {
+		this.viveEnPropiedad = viveEnPropiedad;
 	}
     
     

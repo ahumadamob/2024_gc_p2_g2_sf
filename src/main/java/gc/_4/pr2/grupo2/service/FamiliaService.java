@@ -18,4 +18,8 @@ public interface FamiliaService {
     boolean deleteFamiliaById(Long id);
     
     public boolean existe(Long id);
+    
+    List<Familia> findByRelacionIn(List<String> relaciones);
+
+	List<Familia> findByViveEnPropiedad(Boolean viveEnPropiedad);
 }
