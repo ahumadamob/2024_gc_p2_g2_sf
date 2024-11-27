@@ -1,5 +1,6 @@
 package gc._4.pr2.grupo2.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dto.RespuestaDTO;
 import gc._4.pr2.grupo2.entity.Familia;
 import gc._4.pr2.grupo2.service.FamiliaService;
+import gc._4.pr2.grupo2.service.jpa.FamiliaDTO;
 
 @RestController
 public class FamiliaController {
@@ -49,6 +52,36 @@ public class FamiliaController {
         }
         return respuesta;
     }
+    
+    // Obtener familiar cuya propiedad "relación" sea "Padre" o "Madre"
+    @GetMapping("/familias/padresMadres")
+    public RespuestaDTO<List<Familia>> obtenerFamiliaSegunRelacion() {
+    	List<String> relaciones = Arrays.asList("Padre", "Madre");
+        List<Familia> familias = familiaService.findByRelacionIn(relaciones);
+        RespuestaDTO<List<Familia>> respuesta = new RespuestaDTO<>();
+        respuesta.setEstado(true);
+        respuesta.setMensaje("Familias encontradas");
+        respuesta.setData(familias);
+        return respuesta;
+    }
+    
+    // Obtener familiares propietarios
+    @GetMapping("/padresMadres/propietarios")
+    public RespuestaDTO<List<FamiliaDTO>> getFamiliasPropietarias(@RequestParam(required = false) Boolean viveEnPropiedad) {
+        List<FamiliaDTO> familias = familiaService.findByViveEnPropiedad(viveEnPropiedad);
+
+        RespuestaDTO<List<FamiliaDTO>> respuesta = new RespuestaDTO<>();
+        respuesta.setEstado(true);
+        respuesta.setMensaje("Familias encontradas");
+        respuesta.setData(familias);
+
+        return respuesta;
+    }
+    
+    /*	Obtener todas las familias: GET /padresMadres/propietarios
+    	Obtener solo las familias propietarias: GET /padresMadres/propietarios?viveEnPropiedad=true
+    	Obtener solo las familias que no son propietarias: GET /padresMadres/propietarios?viveEnPropiedad=false
+    */
 
     // Crear una nueva familia
     @PostMapping("/familia")
