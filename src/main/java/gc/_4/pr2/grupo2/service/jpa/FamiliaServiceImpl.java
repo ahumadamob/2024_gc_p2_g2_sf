@@ -60,7 +60,7 @@ public class FamiliaServiceImpl implements FamiliaService {
 
 	// Método para devolver familiares propietario
 	@Override
-	public List<FamiliaDTO> findByViveEnPropiedad(Boolean viveEnPropiedad) {
+	public List<Familia> findByViveEnPropiedad(Boolean viveEnPropiedad) {
 	    List<Familia> familias;
 
 	    // Manejar caso en el que no se proporciona el parámetro viveEnPropiedad
@@ -75,7 +75,7 @@ public class FamiliaServiceImpl implements FamiliaService {
 	    // Mapear las entidades Familia a objetos DTO
 	    return familias.stream()
 	            .map(familia -> {
-	                FamiliaDTO familiaDTO = new FamiliaDTO();
+	                Familia familiaDTO = new Familia();
 	                familiaDTO.setId(familia.getId());
 	                familiaDTO.setNombre(familia.getNombre());
 	                familiaDTO.setApellido(familia.getApellido());
