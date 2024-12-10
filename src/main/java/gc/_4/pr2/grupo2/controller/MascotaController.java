@@ -15,15 +15,30 @@ public class MascotaController {
     @Autowired
     private MascotaService mascotaService;
 
-    @PostMapping ("/mascotas")
-    public DTOMascota<Mascota> guardarMascota(@RequestBody Mascota mascota) {
-    	if(mascotaService.existe(mascota.getId()))	{
-    		return new DTOMascota<Mascota>(false, "Este ID ya existe", null);
-    	}else {
-    		return new DTOMascota<Mascota>(true, "Mascota creado con Exito", mascotaService.guardarMascota(mascota));
-    	}
-    	
+    @PostMapping("/mascotas")
+    public ResponseEntity<DTOMascota<Mascota>> guardarMascota(@RequestBody Mascota mascota) {
+        
+    	// Validar vacunacion
+        if (!mascota.isVacunado() && mascota.getEdad() > 2) {
+            return ResponseEntity.badRequest().body(
+                new DTOMascota<>(false, "No se puede registrar una mascota mayor de 2 años sin vacunar", null)
+            );
+        }
+
+        //Valida que la mascota ya exite
+        if (mascotaService.existe(mascota.getId())) {
+            return ResponseEntity.badRequest().body(
+                new DTOMascota<>(false, "Este ID ya existe", null)
+            );
+        }
+
+        // Guardar la mascota
+        Mascota mascotaGuardada = mascotaService.guardarMascota(mascota);
+        return ResponseEntity.ok(
+            new DTOMascota<>(true, "Mascota creada con éxito", mascotaGuardada)
+        );
     }
+
         
     
     

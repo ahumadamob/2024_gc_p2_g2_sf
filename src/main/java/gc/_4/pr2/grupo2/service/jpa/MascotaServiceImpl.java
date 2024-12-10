@@ -45,6 +45,8 @@ public class MascotaServiceImpl implements MascotaService {
 			return mascotaRepository.existsById(id);
 		}
 	}
+    
+    
 
       @Override
       public void eliminarMascota(Long id) {

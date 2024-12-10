@@ -27,9 +27,9 @@ public class Mascota {
 
     @Column(name = "edad")
     private int edad;
-
-    @Column(name = "propiedad", length = 100)
-    private String propiedad;
+    
+    @Column(name = "vacunado", nullable = false)
+    private boolean vacunado;
 
     // Getters y Setters
 
@@ -73,11 +73,11 @@ public class Mascota {
         this.edad = edad;
     }
 
-    public String getPropiedad() {
-        return propiedad;
+    public boolean isVacunado() {
+        return vacunado;
     }
 
-    public void setPropiedad(String propiedad) {
-        this.propiedad = propiedad;
+    public void setVacunado(boolean vacunado) {
+        this.vacunado = vacunado;
     }
 }
