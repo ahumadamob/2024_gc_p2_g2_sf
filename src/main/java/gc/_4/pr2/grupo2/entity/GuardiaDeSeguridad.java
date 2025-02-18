@@ -26,11 +26,26 @@ public class GuardiaDeSeguridad {
 	@Column(name = "turno", nullable = false, unique = false)
 	private String turno;
 	
+	//Nuevo atributo tipo int puntuacion
+	@Column(name = "puntuacion", nullable = false, unique = false)
+	private int puntuacion;
+	
 	// Getters y Setters
 	/*ejemplo de encapsulamiento: metodos privados a los cuales se 
 	 accede mediante sus respectivos metodos get y/o set */
 	
-	 public Long getId() {
+	
+	//get del atributo puntuacion
+	 public int getPuntuacion() {
+		return puntuacion;
+	}
+
+	 //set del atributo puntuacion
+	public void setPuntuacion(int puntuacion) {
+		this.puntuacion = puntuacion;
+	}
+
+	public Long getId() {
 	        return id;
 	    }
 
