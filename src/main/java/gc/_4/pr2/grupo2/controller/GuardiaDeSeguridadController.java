@@ -45,15 +45,21 @@ public class GuardiaDeSeguridadController {
 		return ResponseEntity.ok(new DTOGuardiaDeSeguridad<>(true, "Guardia encontrado", guardiaDeSeguridad));
 	}
 	
+	//Endpoint Post para agregar recurso
 	@PostMapping ("/guardias")
 	public DTOGuardiaDeSeguridad<GuardiaDeSeguridad> guardarGuardiaDeSeguridad(@RequestBody GuardiaDeSeguridad guardiaDeSeguridad) {
 		if(service.existe(guardiaDeSeguridad.getId())){
 			return new DTOGuardiaDeSeguridad<GuardiaDeSeguridad>(false, "Este ID ya existe", null);
-		}else {
+		}else 
+		{//Validacion de puntuacion
+			if(guardiaDeSeguridad.getPuntuacion()<0 || (guardiaDeSeguridad.getPuntuacion()>10)){
+				return new DTOGuardiaDeSeguridad<GuardiaDeSeguridad>(false, "No se puede registrar un guardia con esa puntuacion", null);
+			}else {
 			return new DTOGuardiaDeSeguridad<GuardiaDeSeguridad>(true, "Guardia creado con Exito", service.guardar(guardiaDeSeguridad));
 		}
 	}
-
+} 
+	
 	@PutMapping("/guardias/{id}")
 	public ResponseEntity<DTOGuardiaDeSeguridad<GuardiaDeSeguridad>> actualizarGuardia(@PathVariable Long id, @RequestBody GuardiaDeSeguridad guardiaDetalles) {
         try {
